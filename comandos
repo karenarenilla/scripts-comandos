@@ -1,0 +1,236 @@
+node 8.12.0-stretch
+postgres 9.6.5
+mariadb 10.2.21
+mongo 4.0.5
+redeis 4.0.12-stretch
+22
+443
+ftp
+dns
+http
+
+1). listar redes de docker
+docker network ls
+
+2). crear red en docker
+docker network create "escibir aqui el nombre de la red"
+
+3). listar volumenes de docker
+docker volume ls
+
+4). inspeccionar info de un contenedor
+docker inspect "escribir aqui el nombre del contenedor
+
+5). crear un contenedor en docker
+docker run \
+    -it \
+    --name "escribir aqui el nombre del contenedor" \
+    --network "escribir el nombre de la red" \
+    -p 0000:0000 \
+    -e ALGUNA_VARIABLE_DE_ENTORNO="algun valor" \
+    -v "algun volumen o alguna ruta del O.S":"alguna ruta dentro del contenedor" \
+    -d "nombre de la imagen":"version de la imagen"
+
+6). eliminar un contenedor
+docker rm -f "escribir aqui el nombre del contenedor"
+
+7). listar los contenedores
+docker ps | less -S
+docker container ls | less -S
+para salir escribir "q"
+
+8). eliminar una imagen
+docker rmi -f "nombre de la imagen":"version"
+
+9). listar imagenes
+docker images
+
+10). bajar una imagen
+docker pull "nombre de la imagen":"version"
+
+11). entrar a un contenedor
+docker exec -it "nombre del contenedor" bash
+cd /app
+
+12). salir de un contenedor
+exit
+ctrl+d
+
+13). parar un contenedor
+docker stop "nombre del contenedor"
+
+14). iniciar un contenedor parado
+docker start "nombre del contenedor"
+
+15). verificar puerto de un contenedor
+telnet localhost "puerto mapeado"
+
+
+
+
+
+
+
+
+
+MANUAL DE VIM
+MODO COMANDO
+     sacape
+MODO EDICION
+    scape i
+
+1) Borrar una linea
+    dd
+2) Copiar una linea
+    yy
+3) Seleccionar una linea
+    v
+4) Pegar una linea
+    p para pegar abajo
+    P para pegar arriba
+5) Para guardar
+    :w
+6) Para salir
+    :q
+7) Deshacer 
+    u 
+8) Borrar una sola letra
+    x  
+
+
+
+
+
+
+
+MANUAL GIT
+
+1) crear repositorio en github
+2) Clonar el repositorio local
+    a) crear .gitignore
+    b) agregar al gitignore los archvos no necesarios para el codigo, ejemplo node_modules.
+3) Subir cambios al repositorio
+    a) git add .
+    b) git commit
+    c) editar el arcchivo que se abre y dejar solo las ramas que se van a subir 
+    d) git push origin la rama donde se va a subir el cambio
+
+4) Crea un branch
+	git branch <nameBranch>
+
+    Crea un branch en base a uno online
+    	git checkout -b newlocalbranchname origin/branch-name
+
+5) Comando -d elimina el branch y lo une al master
+	git branch -d <nameBranch>
+
+6) Busca los cambios nuevos y actualiza el repositorio
+	git pull origin <nameBranch>
+
+7) Cambiar de branch
+	git checkout <nameBranch/tagname>
+
+8) Une el branch actual con el especificado
+	git merge <nameBranch>
+
+9) Verifica cambios en el repositorio online con el local
+	git fetch
+
+10) Limpiar todos los branches eliminados
+	git remote prune origin
+
+11)Borrar un archivo del repositorio
+	git rm <archivo> 
+
+7) Versiones 
+    Muestra una lista de todos los tags
+        git tag
+    Crea un nuevo tags
+        git tag -a <verison> - m "esta es la versión x"
+
+3) Mezclar cambios 
+    a) git checkout nombre de la rama donde se va a bajar cambios
+    b) git pull nombre de la rama donde se va a bajar cambios
+4) Crear una rama en base a otra
+    a) git checkout nombre de la rama base
+    b) git checkout -b nombre de la nueva rama
+
+
+
+
+
+
+<template>
+  <section class="container">
+    <div>
+      <h1>Welcome!</h1>
+      <NLink to="/about">
+        About Page
+      </NLink>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  asyncData() {
+    return {
+      name: process.static ? 'static' : (process.server ? 'server' : 'client')
+    }
+  },
+  head: {
+    title: 'Home'
+  }
+}
+</script>
+
+<style>
+.container {
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+h1 {
+  color: #FAD4C0;
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<template>
+  <div>
+    <p>Hi from {{ name }}</p>
+    <NLink to="/">
+      Home page
+    </NLink>
+  </div>
+</template>
+
+<script>
+export default {
+  asyncData() {
+    return {
+      name: process.static ? 'static' : (process.server ? 'server' : 'client')
+    }
+  },
+  head: {
+    title: 'About page'
+  }
+}
+</script>
+
